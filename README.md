@@ -26,10 +26,26 @@ The model will learn the language and style of the text.  When we use the model 
 8. To generate predictions, create a seed string of several characters as starting input. Then create a for loop that predicts on this input (take the arg max of the softmax output to select the predicted character), appends the prediction to the input, and repeat the loop.  Ensure the ending state at each step is passed as input for the next step.   
 
 ## Example Output
-The model will learn to create english words in a few batches. By 1 Epoch, you will have relatively coherent sequences. 1 Epoch training on GPU took around ~1 hr and loss around 1.33, producing predictions like the following:  
+The model will learn to create english words in a few batches. By 1 Epoch, you will have relatively coherent sequences. 1 Epoch training Shakespeare on GPU took ~1 hr reaching loss ~1.25, producing predictions like the following:  
 ```
-sadfasdf
+brutus:
+i will not do thee worse.
+
+proteus:
+what shall we do? i will not stay to hear it.
+
+pandarus:
+i will seek him to his companies. i will tell you what i say,
+that i might see the sea and land of the streets,
+and the substance of the sea was made to the sea,
+and the device of the world, i would not have it so.
+
+don pedro:
 ```
 ## Sources and Further Reference
-TO DO
-# Sherlock holmes https://sherlock-holm.es/ascii/
+* Torch - Unreasonable effectiveness of recurrent neural networks http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+* Keras - LSTM text generation https://github.com/keras-team/keras/blob/master/examples/lstm_text_generation.py
+* Tensorflow - Shakespeare https://github.com/martin-gorner/tensorflow-rnn-shakespeare
+Data sources:
+* Sherlock holmes text https://sherlock-holm.es/ascii/
+* Shakespeare https://github.com/karpathy/char-rnn
