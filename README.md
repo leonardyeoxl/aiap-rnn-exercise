@@ -1,6 +1,8 @@
 # AIAP RNN Exercise: Language Model
-Exercise to practice building an RNN language model from scratch. You will train an RNN to read in characters from a text file and predict the next character, working with 40 characters at a time (independent of rest of the text). 
-E.g. Input: 'abcd' -> Label: 'bcde'.
+Exercise to practice building an RNN language model from scratch. You will train an RNN to read in characters from a text file and predict the next character, working with 40 characters at a time (independent of rest of the text). E.g. 
+> Input: 'abcd' -> Label: 'bcde'
+> Input: 'bcde' -> Label: 'cdef'
+> ...
 The model will learn the language and style of the text.  When we use the model to make predictions, we use the predicted output at each timestep as the input for the next timestep, to generate completely new text.
 
 ## Exercise Instructions:
