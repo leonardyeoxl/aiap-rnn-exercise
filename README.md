@@ -1,5 +1,6 @@
 # AIAP RNN Exercise: Language Model
-Exercise to practice building an RNN language model from scratch. This exercise trains an RNN to read in characters from a text file and predict the next character, working with 40 characters at a time (independent of rest of the text). E.g. Input: 'abcd', Label: 'bcde'.
+Exercise to practice building an RNN language model from scratch. You will train an RNN to read in characters from a text file and predict the next character, working with 40 characters at a time (independent of rest of the text). 
+E.g. Input: 'abcd' -> Label: 'bcde'.
 The model will learn the language and style of the text.  When we use the model to make predictions, we use the predicted output at each timestep as the input for the next timestep, to generate completely new text.
 
 ## Exercise Instructions:
@@ -8,13 +9,13 @@ The model will learn the language and style of the text.  When we use the model 
 * You can train on any of the text files in the 'data/raw' folder - or any other text file 
 
 ## Code Instructions:
-1. Import numpy and whatever machine learning library you are using (e.g. Keras)
+1. Import numpy and your machine learning library of choice (e.g. Keras)
 2. Open and read the .txt dataset of your choice in lower case. Create a list 'chars' of all the unique characters in the text, e.g. by creating a set of the text.  
 3. Create a dictionary 'char_to_idx' that maps each unique character in the text to sequential integers, and a dictionary 'idx_to_char' that does the opposite. We'll use these dictionaries to convert our text into vectors for the RNN.
 3. Create inputs and labels. 
-	4. To create the inputs, we divide the text into sequences of length e.g. 40 characters. The labels are sequences of length 40 characters offset by one character.  E.g. Input: 'abcd' -> Label 'bcde', Input: 'bcde' -> Label: 'cdef', ...
-	5. Convert inputs and labels into vectors using the 'char_to_idx' dictionary. Our desired vectors for each sequence will be a zero vector of size (sequence length, # characters), with a 1 in each row corresponding to the character's integer map ('one hot encoding'). We do this for all sequences to end up with input and output vectors of size (# sequences, sequence length, # characters)  
-6. Build our model. 
+	1. To create the inputs, we divide the text into sequences of length e.g. 40 characters. The labels are sequences of length 40 characters offset by one character.  E.g. Input: 'abcd' -> Label 'bcde', Input: 'bcde' -> Label: 'cdef', ...
+	1. Convert inputs and labels into vectors using the 'char_to_idx' dictionary. Our desired vectors for each sequence will be a zero vector of size (sequence length, # characters), with a 1 in each row corresponding to the character's integer map ('one hot encoding'). We do this for all sequences to end up with input and output vectors of size (# sequences, sequence length, # characters)  
+1. Build our model. 
 	1. We want two LSTM cells of dimension 512, with the second LSTM cell taking as input the output of the first cell.  We want both cells to output sequences (i.e. we're interested in output at every timestep and not just at end).
 	1. Add Dropout with keep probability 80% for the LSTM cells.
 	1. Add a dense layer of dimension size equal to the number of unique characters in your text. This layer converts the LSTM output of dimension 512 into the odds that the output should be each character (e.g. 'c', 'k')
@@ -25,8 +26,10 @@ The model will learn the language and style of the text.  When we use the model 
 8. To generate predictions, create a seed string of several characters as starting input. Then create a for loop that predicts on this input (take the arg max of the softmax output to select the predicted character), appends the prediction to the input, and repeat the loop.  Ensure the ending state at each step is passed as input for the next step.   
 
 ## Example Output
-The model will learn to create english words in a few batches. By 1 Epoch, you will have relatively coherent sequences. Training for ~1 hr on CPU gives loss around 1.33 and produces predictions like the following:  
+The model will learn to create english words in a few batches. By 1 Epoch, you will have relatively coherent sequences. 1 Epoch training on GPU took around ~1 hr and loss around 1.33, producing predictions like the following:  
 ```
 sadfasdf
 ```
 ## Sources and Further Reference
+TO DO
+# Sherlock holmes https://sherlock-holm.es/ascii/
