@@ -20,7 +20,8 @@ The model will learn the language and style of the text.  When we use the model 
 3. Create a dictionary 'char_to_idx' that maps each unique character (including spaces, punctuation, etc.) in the text to integers (starting from 0 and increasing), and a dictionary 'idx_to_char' that does the opposite. We'll use these dictionaries to convert our text into vectors for the RNN.
 3. Create inputs and labels. 
 	1. To create the inputs, we divide the text into sequences of fixed length (e.g. 40 characters). The labels are sequences of the same length offset by one character.  E.g. Input: 'abcd' -> Label 'bcde', Input: 'bcde' -> Label: 'cdef', ...
-	1. Convert inputs and labels into vectors using the 'char_to_idx' dictionary. Our desired vectors for each sequence will be a zero vector of size (sequence length, # characters), with a 1 in each row corresponding to the character's corresponding integer ('one hot encoding'). We do this for all sequences to end up with input and output vectors of size (# sequences, sequence length, # characters)  
+	1. Convert inputs into vectors. Vectors for each sequence will have size (sequence length, # characters), with each row representing a character in 'one hot encoding'. This means each row is entirely zeros except for a 1 at the column corresponding to the character's integer map (in 'char_to_idx'). We repeat this for all sequences to end up with input vector of size (# sequences, sequence length, # characters). 
+	1. Repeat the above step for labels, resulting in label vector of size (# sequences, sequence length, # characters).
 1. Build our model. 
 	1. We want two LSTM cells of dimension 512, with the second LSTM cell taking as input the output of the first cell.  We want both cells to output sequences (i.e. we're interested in output at every timestep and not just at the end).
 	1. Add Dropout with keep probability 80% for the LSTM cells.
