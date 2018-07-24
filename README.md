@@ -1,5 +1,5 @@
 # AIAP RNN Exercise: Language Model
-Exercise to practice building an RNN language model from scratch. You will train an RNN to read in characters from a text file and predict the next character, working with e.g. 40 characters at a time (independent of rest of the text). This will look like:
+Exercise to practice building an RNN language model from scratch. You will train an RNN to read in characters from a text file and predict the next character, working with sequences of e.g. 40 characters at a time (independent of rest of the text). This will look like:
 
 > Input: 'abcd' -> Label: 'bcde'
 
@@ -7,7 +7,7 @@ Exercise to practice building an RNN language model from scratch. You will train
 
 > ...
 
-The model will learn the language and style of the text.  When we use the model to make predictions, we use the predicted output at each timestep as the input for the next timestep, to generate completely new text.
+The model will learn the language and style of the text.  When we use the model to make predictions, we feed back the predicted output at each timestep as the input to the next timestep, to generate completely new text.
 
 ## Exercise Instructions:
 * Create your own script or Jupyter Notebook following the 'Code Instructions' below.
@@ -34,19 +34,19 @@ The model will learn the language and style of the text.  When we use the model 
 ## Example Output
 The model will learn to create coherent English words in a few batches. By 1 Epoch, you will have relatively coherent sequences of words. 1 Epoch training Shakespeare on GPU took ~1 hr reaching loss ~1.25, producing predictions like the following:  
 ```
-brutus:
-i will not do thee worse.
-
-proteus:
-what shall we do? i will not stay to hear it.
-
-pandarus:
-i will seek him to his companies. i will tell you what i say,
-that i might see the sea and land of the streets,
+emperor:
+i have seen her to seek the strength of the streets,
 and the substance of the sea was made to the sea,
 and the device of the world, i would not have it so.
 
 don pedro:
+what say you to this?
+
+cassio:
+i pray you, sir, the duke of york is strange.
+
+antipholus of ephesus:
+i will not stay to see him so 
 ```
 ## Sources and Further Reference
 * Withdrawn until Thursday
